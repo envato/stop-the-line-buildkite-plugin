@@ -14,7 +14,7 @@ load "$BATS_PATH/load.bash"
     'meta-data get test-key : echo "test-value"' \
     'pipeline upload --replace : cat'
 
-  run $PWD/hooks/command
+  run $PWD/hooks/post-command
 
   assert_success
   assert_output --partial 'steps: []'
@@ -28,7 +28,7 @@ load "$BATS_PATH/load.bash"
 
   stub buildkite-agent 'meta-data get test-key : echo "test-value"'
 
-  run $PWD/hooks/command
+  run $PWD/hooks/post-command
 
   assert_failure
   unstub buildkite-agent
@@ -41,7 +41,7 @@ load "$BATS_PATH/load.bash"
 
   stub buildkite-agent 'meta-data get test-key : echo "not a match"'
 
-  run $PWD/hooks/command
+  run $PWD/hooks/post-command
 
   assert_success
   unstub buildkite-agent
@@ -56,7 +56,7 @@ load "$BATS_PATH/load.bash"
     'meta-data get test-key : echo "does-not-match"' \
     'pipeline upload --replace : cat'
 
-  run $PWD/hooks/command
+  run $PWD/hooks/post-command
 
   assert_success
   assert_output --partial 'steps: []'
@@ -70,7 +70,7 @@ load "$BATS_PATH/load.bash"
 
   stub buildkite-agent 'meta-data get test-key : echo "does-not-match"'
 
-  run $PWD/hooks/command
+  run $PWD/hooks/post-command
 
   assert_failure
   unstub buildkite-agent
@@ -83,7 +83,7 @@ load "$BATS_PATH/load.bash"
 
   stub buildkite-agent 'meta-data get test-key : echo "test-value"'
 
-  run $PWD/hooks/command
+  run $PWD/hooks/post-command
 
   assert_success
   unstub buildkite-agent
