@@ -1,0 +1,35 @@
+name: Stop The Line
+description: A Buildkite plugin that stops the build if metadata is set to a given value.
+author: https://github.com/envato
+requirements: []
+configuration:
+  properties:
+    if:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+      required:
+        - key
+        - value
+    unless:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+      required:
+        - key
+        - value
+    style:
+      type: string
+  oneOf:
+    - required:
+      - if
+    - required:
+      - unless
+  required:
+    - style
