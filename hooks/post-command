@@ -19,7 +19,7 @@ echo "+++ :octagonal_sign: Checking build meta-data"
 key=$(plugin_read_config IF_KEY)
 if [ -n "$key" ]; then
   anticipated_value=$(plugin_read_config IF_VALUE)
-  actual_value=$(buildkite-agent meta-data get "$key")
+  actual_value=$(buildkite-agent meta-data get "$key" --default '')
   echo "$key: '$actual_value'"
   echo "'$anticipated_value'"
   if [ "$anticipated_value" = "$actual_value" ]; then
@@ -28,7 +28,7 @@ if [ -n "$key" ]; then
 else
   key=$(plugin_read_config UNLESS_KEY)
   anticipated_value=$(plugin_read_config UNLESS_VALUE)
-  actual_value=$(buildkite-agent meta-data get "$key")
+  actual_value=$(buildkite-agent meta-data get "$key" --default '')
   echo "$key: '$actual_value'"
   if [ "$anticipated_value" != "$actual_value" ]; then
     stop_the_line

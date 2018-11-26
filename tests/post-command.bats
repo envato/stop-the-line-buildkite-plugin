@@ -11,7 +11,7 @@ load "$BATS_PATH/load.bash"
   export BUILDKITE_PLUGIN_STOP_THE_LINE_STYLE=pass
 
   stub buildkite-agent \
-    'meta-data get test-key : echo "test-value"' \
+    'meta-data get test-key --default '' : echo "test-value"' \
     'pipeline upload --replace : cat'
 
   run $PWD/hooks/post-command
@@ -26,7 +26,7 @@ load "$BATS_PATH/load.bash"
   export BUILDKITE_PLUGIN_STOP_THE_LINE_IF_VALUE=test-value
   export BUILDKITE_PLUGIN_STOP_THE_LINE_STYLE=fail
 
-  stub buildkite-agent 'meta-data get test-key : echo "test-value"'
+  stub buildkite-agent 'meta-data get test-key --default '' : echo "test-value"'
 
   run $PWD/hooks/post-command
 
@@ -39,7 +39,7 @@ load "$BATS_PATH/load.bash"
   export BUILDKITE_PLUGIN_STOP_THE_LINE_IF_VALUE=test-value
   export BUILDKITE_PLUGIN_STOP_THE_LINE_STYLE=fail
 
-  stub buildkite-agent 'meta-data get test-key : echo "not a match"'
+  stub buildkite-agent 'meta-data get test-key --default '' : echo "not a match"'
 
   run $PWD/hooks/post-command
 
@@ -53,7 +53,7 @@ load "$BATS_PATH/load.bash"
   export BUILDKITE_PLUGIN_STOP_THE_LINE_STYLE=pass
 
   stub buildkite-agent \
-    'meta-data get test-key : echo "does-not-match"' \
+    'meta-data get test-key --default '' : echo "does-not-match"' \
     'pipeline upload --replace : cat'
 
   run $PWD/hooks/post-command
@@ -68,7 +68,7 @@ load "$BATS_PATH/load.bash"
   export BUILDKITE_PLUGIN_STOP_THE_LINE_UNLESS_VALUE=test-value
   export BUILDKITE_PLUGIN_STOP_THE_LINE_STYLE=fail
 
-  stub buildkite-agent 'meta-data get test-key : echo "does-not-match"'
+  stub buildkite-agent 'meta-data get test-key --default '' : echo "does-not-match"'
 
   run $PWD/hooks/post-command
 
@@ -81,7 +81,7 @@ load "$BATS_PATH/load.bash"
   export BUILDKITE_PLUGIN_STOP_THE_LINE_UNLESS_VALUE=test-value
   export BUILDKITE_PLUGIN_STOP_THE_LINE_STYLE=fail
 
-  stub buildkite-agent 'meta-data get test-key : echo "test-value"'
+  stub buildkite-agent 'meta-data get test-key --default '' : echo "test-value"'
 
   run $PWD/hooks/post-command
 
