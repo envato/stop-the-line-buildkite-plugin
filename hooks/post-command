@@ -7,7 +7,7 @@ function plugin_read_config() {
 }
 
 function stop_the_line() {
-  echo "+++ :octagonal_sign: Stopping the line"
+  echo "--- :octagonal_sign: Stopping the line"
   case "$(plugin_read_config STYLE)" in
     pass) echo 'steps: []' | buildkite-agent pipeline upload --replace;;
     fail) exit 1;;
@@ -15,7 +15,7 @@ function stop_the_line() {
   esac
 }
 
-echo "+++ :octagonal_sign: Checking build meta-data"
+echo "--- Checking build meta-data"
 key=$(plugin_read_config IF_KEY)
 if [ -n "$key" ]; then
   anticipated_value=$(plugin_read_config IF_VALUE)
