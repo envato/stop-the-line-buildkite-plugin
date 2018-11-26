@@ -12,7 +12,7 @@ steps:
   - label: ":sparkles: Lint"
     plugins:
       - plugin-linter#v2.0.0:
-          id: "envato/github-pull-request"
+          id: "envato/stop-the-line"
     agents:
       queue: "${AGENT_QUEUE}"
 
