@@ -1,7 +1,6 @@
 # Stop The Line Buildkite Plugin
 
-![Build status](https://badge.buildkite.com/dbf266ceeb831a2f0c1c0a0977d643e3327c689eaa309a4e5b.svg?branch=main)
-[![MIT License](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE)
+[![tests](https://github.com/envato/samson-deploy-buildkite-plugin/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/envato/samson-deploy-buildkite-plugin/actions/workflows/tests.yml)
 
 A [Buildkite plugin] that stops build if a metadata key has a certain value.
 
